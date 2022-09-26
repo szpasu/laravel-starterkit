@@ -1,0 +1,94 @@
+version: "3.7"
+services:
+    app:
+        build:
+            args:
+                user: www
+                uid: 1000
+            context: ./
+            dockerfile: ./docker/php/Dockerfile
+        image: laravel-image
+        container_name: ${APP_NAME}-app
+        restart: unless-stopped
+        working_dir: /var/www/
+        environment:
+            LARAVEL_SAIL: 1
+        volumes:
+            - ./:/var/www
+            - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - app-network
+
+    db:
+        image: mysql:5.7
+        container_name: ${APP_NAME}-db
+        restart: unless-stopped
+        ports:
+            - '${FORWARD_DB_PORT:-3306}:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+            - ./docker/mysql/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+            - ./docker/mysql/data:/var/lib/mysql
+        networks:
+            - app-network
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+            retries: 3
+            timeout: 5s
+
+    nginx:
+        image: nginx:alpine
+        container_name: ${APP_NAME}-nginx
+        restart: unless-stopped
+        ports:
+            - '${APP_PORT:-80}:80'
+            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - app-network
+
+    mailhog:
+        image: mailhog/mailhog:latest
+        container_name: ${APP_NAME}-mailhog
+        ports:
+            - '${FORWARD_MAILHOG_PORT:-1025}:1025'
+            - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
+        networks:
+            - app-network
+
+    redis:
+        image: 'redis:alpine'
+        container_name: ${APP_NAME}-redis
+        ports:
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
+        volumes:
+            - './docker/redis/data:/data'
+        networks:
+        - app-network
+        healthcheck:
+            test: [ "CMD", "redis-cli", "ping" ]
+            retries: 3
+            timeout: 5s
+
+    selenium:
+        image: 'selenium/standalone-chrome:3.0.1-fermium'
+        container_name: ${APP_NAME}-selenium
+        volumes:
+            - /dev/shm:/dev/shm
+        networks:
+            - app-network
+        ports:
+            - "4444:4444"
+
+networks:
+    app-network:
+        driver: bridge
