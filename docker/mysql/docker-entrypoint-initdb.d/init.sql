@@ -1,0 +1,1 @@
+GRANT ALL ON `${DB_DATABASE}_test\_%`.* TO `default`@`%`;
