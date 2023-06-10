@@ -1,2 +1,2 @@
-/docker/mysql/data
-/docker/redis/data
+docker/mysql/data
+docker/redis/data
