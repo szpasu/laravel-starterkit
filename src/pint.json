@@ -1,0 +1,5 @@
+{
+  "preset": "psr12",
+  "exclude": ["vendor",  "public", "lang", "bootstrap"],
+  "rules": { "no_superfluous_phpdoc_tags": { "allow_mixed": true }, "new_with_braces": {"anonymous_class": false}, "class_definition": {"inline_constructor_arguments": false}, "declare_strict_types": true,  "braces": {"allow_single_line_anonymous_class_with_empty_body": true, "position_after_anonymous_constructs": "next"}, "curly_braces_position": {"anonymous_classes_opening_brace": "next_line_unless_newline_at_signature_end"}}
+}

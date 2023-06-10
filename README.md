@@ -4,28 +4,25 @@
 
 <p id="description">A ready project with laravel and basic packages and a configured docker is the perfect solution for a new project.</p>
 
-
-
 <h2>🧐 Installed Packages</h2>
 
 Here're some of the packages installed:
 
-*   PHP 8.1
-*   Laravel 9.19 - https://github.com/laravel/laravel
-*   Laravel Cashier 14.0 - https://github.com/laravel/cashier-stripe
-*   Laravel Jetstream 2.11 - https://github.com/laravel/jetstream
-*   Laravel Sanctum 3.0 - https://github.com/laravel/sanctum
-*   Laravel Scout 9.4 - https://github.com/laravel/scout
-*   Laravel Socialite 5.5 - https://github.com/laravel/socialite
-*   Laravel Livewire 2.5 - https://github.com/livewire/livewire
-*   Laravel Backup 8.1 - https://github.com/spatie/laravel-backup
-*   Laravel Permission 5.5 - https://github.com/spatie/laravel-permission
-*   Laravel Horizon 5.10 - https://github.com/laravel/horizon
-*   Laravel Telescope 4.9 - https://github.com/laravel/telescope
-*   Laravel Pint 1.1 - https://github.com/laravel/pint
-*   Laravel Dusk 7.0 - https://github.com/laravel/dusk
-*   Tailwind CSS 3.1 - https://github.com/tailwindlabs/tailwindcss
-*   Vie 3.0 - https://github.com/vitejs/vite
+- PHP 8.1
+- Laravel 10.0 - https://github.com/laravel/laravel
+- Laravel Cashier 14.0 - https://github.com/laravel/cashier-stripe
+- Laravel Jetstream 2.11 - https://github.com/laravel/jetstream
+- Laravel Sanctum 3.0 - https://github.com/laravel/sanctum
+- Laravel Scout 9.4 - https://github.com/laravel/scout
+- Laravel Socialite 5.5 - https://github.com/laravel/socialite
+- Laravel Backup 8.1 - https://github.com/spatie/laravel-backup
+- Laravel Permission 5.5 - https://github.com/spatie/laravel-permission
+- Laravel Horizon 5.10 - https://github.com/laravel/horizon
+- Laravel Telescope 4.9 - https://github.com/laravel/telescope
+- Laravel Pint 1.1 - https://github.com/laravel/pint
+- Laravel Dusk 7.0 - https://github.com/laravel/dusk
+- Tailwind CSS 3.1 - https://github.com/tailwindlabs/tailwindcss
+- Vie 3.0 - https://github.com/vitejs/vite
 
 <h2>🛠️ Installation Steps:</h2>
 
